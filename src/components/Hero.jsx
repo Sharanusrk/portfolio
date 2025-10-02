@@ -20,7 +20,7 @@ const Hero = () => {
             <span className="text-accent">
               <TypeAnimation
                 sequence={[
-                  "Pawan Raju",
+                  "Sharanu",
                   1000,
                   "a Frontend Developer",
                   1000,
