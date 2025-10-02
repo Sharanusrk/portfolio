@@ -56,7 +56,7 @@ const Hero = () => {
             View Projects
           </a>
           <a
-            href="sharanu-resumerk.pdf" // Update to a relative path
+            href="resume-sharanurk.pdf" // Update to a relative path
             download
             className="border text-primary border-accent text-accent hover:bg-accent/10 p-2 sm:px-6 sm:py-3 rounded-lg transition-all transform hover:scale-105 hover:shadow-lg"
           >
