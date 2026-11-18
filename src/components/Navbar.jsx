@@ -1,89 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
-import { motion } from 'framer-motion';
-import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
-import { SiGmail } from "react-icons/si";
+import { useState } from "react";
 
-const navItems = [
-  { name: 'Home', to: 'home' },
-  { name: 'About', to: 'about' },
-  { name: 'Courses', to: 'courses' },
-  { name: 'Skills', to: 'skills' },
-  { name: 'Projects', to: 'projects' },
-  { name: 'Contact', to: 'contact' },
-];
+const links = [["About", "#about"], ["Skills", "#skills"], ["Projects", "#projects"], ["Contact", "#contact"]];
 
-const socialLinks = [
-  { icon: FaGithub, href: 'https://github.com/sharanusrk' },
-  { icon: FaLinkedin, href: 'https://www.linkedin.com/in/sharanu-kumusagi' },
-  { icon: FaInstagram, href: 'https://www.instagram.com/sharanu_srk?igsh=MXBvNzBqdWw1ZjlpZA==' },
-];
-
-function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-dark-200/95 shadow-lg' : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            className="text-xl font-bold text-primary"
-          ><div className='flex gap-2'>
-            <img src="mie_me.jpg" alt="small squre Pic" className="w-12 h-12 rounded-xl mt-4" />
-          </div>
-          </motion.div>
-          
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                spy={true}
-                smooth={true}
-                duration={500}
-                className="text-gray-300 hover:text-primary cursor-pointer transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-
-          <div className="flex items-center space-x-4">
-            {socialLinks.map((social, index) => {
-              const Icon = social.icon;
-              return (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2, color: '#0EA5E9' }}
-                  className="text-gray-300 hover:text-primary text-xl"
-                >
-                  <Icon />
-                </motion.a>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </motion.nav>
-  );
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  return <header className="site-header"><nav className="nav-shell" aria-label="Main navigation">
+    <a className="wordmark" href="#home" aria-label="Sharanabasappa, home">sharan<span>.</span></a>
+    <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-label="Toggle navigation" onClick={() => setMenuOpen(!menuOpen)}><span></span><span></span></button>
+    <div className={`nav-links${menuOpen ? " is-open" : ""}`}>
+      {links.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
+      <a className="nav-cta" href="mailto:sharankumusagi@gmail.com">Let&apos;s talk <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav></header>;
 }
-
-export default Navbar;

@@ -1,37 +1,13 @@
-import React, { Suspense, lazy } from "react";
-import ParticlesBackground from "../components/ParticlesBackground";
 import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import AboutSection from "../components/AboutSection";
+import Skills from "../components/Skills";
+import Projects from "../components/Projects";
+import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
-// Lazy load components to improve initial load time
-const Hero = lazy(() => import("../components/Hero"));
-const AboutSection = lazy(() => import("../components/AboutSection"));
-const Timeline = lazy(() => import("../components/Timeline"));
-const Skills = lazy(() => import("../components/Skills"));
-const Projects = lazy(() => import("../components/Projects"));
-const Contact = lazy(() => import("../components/Contact"));
-const Courses = lazy(() => import("../components/Courses"));
-
 function Home() {
-  return (
-    <>
-      <Navbar />
-      <ParticlesBackground />
-      
-      {/* Suspense Wrapper for Lazy Loaded Components */}
-      <Suspense fallback={<div>Loading...</div>}>
-        <Hero />
-        <AboutSection />
-        <Timeline />
-        <Courses />
-        <Skills />
-        <Projects />
-        <Contact />
-      </Suspense>
-      
-      <Footer />
-    </>
-  );
+  return <><Navbar /><main><Hero /><AboutSection /><Skills /><Projects /><Contact /></main><Footer /></>;
 }
 
 export default Home;

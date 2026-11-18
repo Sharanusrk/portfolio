@@ -1,66 +1,24 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaCode, FaServer } from 'react-icons/fa';
-import { SiCssdesignawards } from "react-icons/si";
+import { FaArrowUpRightFromSquare, FaGraduationCap, FaLocationDot } from "react-icons/fa6";
 
-function AboutSection() {
-  return (
-    <section id="about" className="py-20 bg-dark-100">
-      <div className="container mx-auto px-6 backdrop-blur-0">
-        {/* Heading and Description */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">About Me</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
-          <p className="text-gray-300 max-w-2xl mx-auto">
-            I'm a passionate software developer with expertise in Javascript and the MERN stack. 
-            I love building projects on Web. Aiming to create 
-            user-friendly and quick solutions.
-          </p>
-        </motion.div>
+const highlights = [
+  { number: "01", title: "Product minded", detail: "I enjoy taking an idea from a clear user problem through to a working, deployed product." },
+  { number: "02", title: "Full stack", detail: "From responsive interfaces and REST APIs to authentication, data, and deployment." },
+  { number: "03", title: "Always learning", detail: "Currently growing my skills in AI, system design, and reliable software delivery." },
+];
 
-        {/* Service Cards */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {[
-            {
-              icon: FaCode,
-              title: "Web Development",
-              description: "Building dynamic web applications using modern technologies"
-            },
-            {
-              icon: SiCssdesignawards,
-              title: "Frontend Development",
-              description: "Creating user-Friendly and responsive web-Pages "
-            },
-            {
-              icon: FaServer,
-              title: "Backend Development",
-              description: "Developing robust and scalable server-side applications"
-            }
-          ].map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-800/50 p-6 rounded-lg shadow-lg hover:transform hover:scale-105 hover:bg-primary/20 transition-all ease-in-out duration-300"
-            >
-              <service.icon className="text-primary text-4xl mb-4 mx-auto transition-all ease-in-out duration-300 hover:scale-110" />
-              <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
-              <p className="text-gray-400">{service.description}</p>
-            </motion.div>
-          ))}
-        </div>
-
+export default function AboutSection() {
+  return <section className="about-section section-wrap" id="about">
+    <div className="section-heading"><span className="section-kicker">A little about me</span><h2>Curious by nature.<br /><em>Builder by choice.</em></h2></div>
+    <div className="about-content">
+      <div className="about-bio">
+        <p>I&apos;m a full stack developer and MCA student at Sapthagiri NPS University. I like building practical web products that connect thoughtful interfaces with dependable backends.</p>
+        <p>Recently, I&apos;ve been working on trip planning and campus community tools, with a focus on maps, authentication, APIs, and database-backed workflows.</p>
+        <div className="about-facts"><span><FaGraduationCap /> MCA, 2025–2027</span><span><FaLocationDot /> Bengaluru, India</span></div>
+        <a className="text-link" href="https://github.com/sharanusrk" target="_blank" rel="noreferrer">More on GitHub <FaArrowUpRightFromSquare /></a>
       </div>
-    </section>
-  );
+      <div className="highlight-list">{highlights.map((item) => <article className="highlight" key={item.number}><span>{item.number}</span><div><h3>{item.title}</h3><p>{item.detail}</p></div><span className="highlight-arrow">↗</span></article>)}</div>
+    </div>
+    <div className="education-strip"><span>Education</span><strong>Master of Computer Applications</strong><span>Sapthagiri NPS University · 2025–2027 (pursuing)</span><i></i><strong>Bachelor of Computer Applications</strong><span>Sharnbasva University · 2022–2025 · CGPA 8.63</span></div>
+    <div className="experience-strip"><span className="section-kicker">Experience & learning</span><div><strong>Web Development Trainee · Internshala</strong><p>Built responsive React interfaces, integrated REST APIs, and tested endpoints with Postman.</p></div><div className="cert-list"><span>Web Development · Internshala</span><span>Communication & Professional Development · JoshTalks</span></div></div>
+  </section>;
 }
-
-export default AboutSection;
