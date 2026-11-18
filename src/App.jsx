@@ -10,7 +10,7 @@ export default function App() {
       <meta property="og:title" content="Sharanabasappa Kumusagi — Full Stack Developer" />
       <meta property="og:description" content="Full stack developer and MCA student building useful web products." />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content="/sharanabasappa-kumusagi.jpeg" />
+      <meta property="og:image" content={`${import.meta.env.BASE_URL}sharanabasappa-kumusagi.jpeg`} />
       <meta name="theme-color" content="#f3f1eb" />
     </Helmet>
     <div className="site-shell"><Home /></div>

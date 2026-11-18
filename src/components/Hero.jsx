@@ -8,7 +8,7 @@ export default function Hero() {
       <p className="hero-intro">I&apos;m Sharanabasappa Kumusagi, a developer from Bengaluru who builds and ships web applications with React, Next.js, FastAPI, and PostgreSQL.</p>
       <div className="hero-actions">
         <a className="button button-dark" href="#projects">Explore my work <span aria-hidden="true">↘</span></a>
-        <a className="button button-light" href="/Sharanabasappa_Resume_updated.pdf" target="_blank" rel="noreferrer">View résumé <span aria-hidden="true">↗</span></a>
+        <a className="button button-light" href={`${import.meta.env.BASE_URL}Sharanabasappa_Resume_updated.pdf`} target="_blank" rel="noreferrer">View résumé <span aria-hidden="true">↗</span></a>
       </div>
       <div className="hero-socials" aria-label="Social profiles">
         <a href="https://github.com/sharanusrk" target="_blank" rel="noreferrer"><FaGithub /> GitHub</a>
@@ -17,7 +17,7 @@ export default function Hero() {
       </div>
     </div>
     <div className="hero-visual">
-      <div className="portrait-frame"><img src="/sharanabasappa-kumusagi.jpeg" alt="Sharanabasappa Kumusagi" /></div>
+      <div className="portrait-frame"><img src={`${import.meta.env.BASE_URL}sharanabasappa-kumusagi.jpeg`} alt="Sharanabasappa Kumusagi" /></div>
       <div className="portrait-caption"><span>Currently exploring</span><strong>AI · Product engineering · DevOps</strong></div>
       <div className="hero-index">01 <span>/ 04</span></div>
       <div className="hero-orbit" aria-hidden="true">S</div>
